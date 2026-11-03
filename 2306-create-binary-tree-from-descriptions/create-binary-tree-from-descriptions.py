@@ -1,9 +1,11 @@
+
 class Solution:
     def createBinaryTree(self, descriptions: List[List[int]]) -> Optional[TreeNode]:
 
         nodes = {}
         children = set()
 
+        # Step 1: Create nodes and connect parent-child relationships
         for parent, child, isLeft in descriptions:
 
             if parent not in nodes:
@@ -19,6 +21,9 @@ class Solution:
 
             children.add(child)
 
-        for val in nodes:
-            if val not in children:
-                return nodes[val]
+        # Step 2: Find the root node
+        for value in nodes:
+            if value not in children:
+                return nodes[value]
+
+        return None
